@@ -1,59 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:list_test/ui/themes.dart';
 
-import 'widgets/add_list.dart';
-
-class TaskListScreen extends StatefulWidget {
-  const TaskListScreen({Key? key}) : super(key: key);
+class AddList extends StatefulWidget {
+  final bool isAdd;
+  const AddList({
+    required this.isAdd,
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<TaskListScreen> createState() => _TaskListScreenState();
+  State<AddList> createState() => _AddListState();
 }
 
-class _TaskListScreenState extends State<TaskListScreen> {
-  final addListener = ValueNotifier<bool>(false);
+class _AddListState extends State<AddList> {
   final listToShow = List.generate(6, (index) => index.toString());
   final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onPanDown: (_){
-        if (controller.text.isNotEmpty) {
-      listToShow.add(controller.text);
-      listToShow.clear();
-      addListener.value = false;
-    }
-      },
-      child: Scaffold(
-        resizeToAvoidBottomInset: true,
-        body: Padding(
-          padding: Themes.screenPadding,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text('Tasks', style: Theme.of(context).textTheme.titleLarge),
-                  SizedBox(
-                    width: 56,
-                    height: 56,
-                    child: OutlinedButton.icon(
-                      onPressed: () {
-                        if (!addListener.value) {
-                          addListener.value = true;
-                        }
-                      },
-                      icon: const Icon(
-                        Icons.add,
-                        size: 36,
-                      ),
-                      label: const SizedBox.shrink(),
-                    ),
-                  ),
-                 
-                ],
-              ),  Column(
+    return Column(
       children: [
         ListView.separated(
           shrinkWrap: true,
@@ -80,7 +44,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
             );
           },
         ),
-        if (addListener.value) ...[
+        if (widget.isAdd) ...[
           if (listToShow.isNotEmpty) const Divider(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -110,11 +74,6 @@ class _TaskListScreenState extends State<TaskListScreen> {
           ),
         ],
       ],
-    ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }

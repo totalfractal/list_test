@@ -14,6 +14,7 @@ class Themes {
     outlinedButtonTheme: OutlinedButtonThemeData(style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(242, 243, 255, 1)),
       foregroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(87, 87, 103, 1)), 
+  
       elevation: MaterialStateProperty.all<double>(0), 
       padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
     )),

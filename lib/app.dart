@@ -10,7 +10,7 @@ class TaskApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: Themes.lightTheme,
-      home: const TaskListScreen(),
+      home: GestureDetector(onTap: () => FocusManager.instance.primaryFocus?.unfocus(), child: const TaskListScreen()),
     );
   }
 }
