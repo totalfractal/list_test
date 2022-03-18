@@ -53,10 +53,12 @@ class _AddListState extends State<AddList> {
                   controller: widget.textController,
                   onEditingComplete: _onEditingComplete,
                   autofocus: true,
+                  style: Theme.of(context).textTheme.bodyMedium,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.zero,
                     hintText: 'Input task text...',
                     hintStyle: Theme.of(context).textTheme.bodyMedium,
+                    
                   ),
                 ),
               ),

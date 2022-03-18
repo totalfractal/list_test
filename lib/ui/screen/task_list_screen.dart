@@ -20,7 +20,9 @@ class _TaskListScreenState extends State<TaskListScreen> {
       onPanDown: (_) {
         if (addListener.value) {
           FocusManager.instance.primaryFocus?.unfocus();
-          if (_textController.text.isEmpty) {}
+          if (_textController.text.isEmpty) {
+            addListener.value = false;
+          }
         }
       },
       child: Scaffold(
