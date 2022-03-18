@@ -26,7 +26,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
         }
       },
       child: Scaffold(
-        resizeToAvoidBottomInset: true,
+        //resizeToAvoidBottomInset: true,
         body: Padding(
           padding: Themes.screenPadding,
           child: Column(
